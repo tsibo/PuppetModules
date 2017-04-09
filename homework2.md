@@ -36,4 +36,4 @@ moduuli näytti ensin tältä
 Tämän jälkeen ajoin modulen komennolla `puppet apply -e 'class{h2apache2:}'`
 ja koska kaiki näytti toimivan kävin samalla tarkastamassa selaimen kautta, 
 mihin localhost minut vei ja ilokseni huomasin sen avaavan apachen default
-it works sivun
+it works sivun, joten moduuli toimi halutulla tavalla.
