@@ -26,7 +26,7 @@ jonka jälkeen menin manifests kansioon ja loin init.pp tiedoston komennolla
 Tein ensin tiedostoon vain sen osan joka asentaa apachen koneelle joten
 moduuli näytti ensin tältä
 
->class h2apache2{
+	class h2apache2{
 
         package { 'apache2':
 
@@ -34,8 +34,8 @@ moduuli näytti ensin tältä
 
         }
 
-}
->
+	}
+
 
 Tämän jälkeen ajoin modulen komennolla `puppet apply -e 'class{h2apache2:}'`
 ja koska kaiki näytti toimivan kävin samalla tarkastamassa selaimen kautta, 
