@@ -100,7 +100,7 @@ avulla, joten minun piti lisätä se vielä moduuliini joka näytti viimeisen va
 	}
 
 
-Moduuli toimi niinkuin pitikin 
+Kun moduulin ajaa jälleen komennolla `sudo puppet apply -e 'class{h2apache2:}'`niin moduuli toimi niinkuin pitikin 
 
 ## References 
 
@@ -112,4 +112,3 @@ Moduuli toimi niinkuin pitikin
 
 [Markdownin tutoriaali](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-jee
