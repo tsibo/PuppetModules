@@ -101,3 +101,7 @@ avulla, joten minun piti lisätä se vielä moduuliini joka näytti viimeisen va
 
 
 Moduuli toimi niinkuin pitikin 
+
+## References 
+
+[Kurssin omat sivut](http://terokarvinen.com/2017/aikataulu-%e2%80%93-linuxin-keskitetty-hallinta-%e2%80%93-ict4tn011-11-%e2%80%93-loppukevat-2017-p2)
