@@ -45,15 +45,21 @@ it works sivun, joten moduuli toimi halutulla tavalla.
 Tämän jälkeen menin muokkaamaan moduuliani siten, että file atribuutti
 muokkaa index.html filen sisältöä haluamakseni kun ajan moduulin
 
->`class h2apache2{
+	class h2apache2{
+
         package { 'apache2':
+
                 ensure => "installed",
+
         }
+
         file { '/var/www/html/index.html':
+
                 content => "vaihda muuta hauskaa tilalle kuin it works",
         }
-}
-`
+
+	}
+
 
 Tämän jälkeen oli vielä ajettava `sudo service apache2 restart` komento jotta
  muutokset tulivat voimaan
