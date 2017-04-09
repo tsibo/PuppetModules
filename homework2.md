@@ -69,21 +69,35 @@ Seuraavaksi halusin vielä varmistaa että apache2 on käynnissä service atribu
 avulla, joten minun piti lisätä se vielä moduuliini joka näytti viimeisen vaiheen jälkeen tältä
 
 
->` class h2apache2{
+	class h2apache2{
+
         package { 'apache2':
+
                 ensure => "installed",
+
         }
+
         file { '/var/www/html/index.html':
+
                 content => "vaihda muuta hauskaa tilalle kuin it works",
+
         }
+
         service { 'apache2':
+
                 ensure => 'running',
+
                 require => [
+
                 Package['apache2'],
+
                 File['/var/www/html/index.html'],
+
                 ]
+
         }
-}
-`
+
+	}
+
 
 Moduuli toimi niinkuin pitikin 
