@@ -10,4 +10,4 @@ Päätin tehdä moduulin, jonka funktio on asentaa apache2 paketti ja muuttaa se
 kotisivun ulkomuotoa automaattisesti. Tätä varten poistin ensin apache2
 paketin ajamalla komennon
 
-$sudo apt-get purge apache2 -y$
+`sudo apt-get purge apache2 -y`
