@@ -11,3 +11,14 @@ kotisivun ulkomuotoa automaattisesti. Tätä varten poistin ensin apache2
 paketin ajamalla komennon
 
 `sudo apt-get purge apache2 -y`
+
+Tämän jälkeen kävin tarkistamassa selaimen kautta, ettö osoitekenttään
+kirjoitettu "localhost" ei antanut toimivaa apachen kotisivua.
+
+Tämän jälkeen tein uuden moduulin sijaintiin /etc/puppet/modules
+komennolla
+
+`sudo mkdir -p h2apache2/manifests/`
+
+jonka jälkeen menin manifests kansioon ja loin init.pp tiedoston komennolla
+`sudo nano init.pp`
