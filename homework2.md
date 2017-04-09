@@ -59,7 +59,7 @@ Seuraavaksi halusin vielä varmistaa että apache2 on käynnissä service atribu
 avulla, joten minun piti lisätä se vielä moduuliini joka näytti viimeisen vaiheen jälkeen tältä
 
 
-' class h2apache2{
+>` class h2apache2{
         package { 'apache2':
                 ensure => "installed",
         }
