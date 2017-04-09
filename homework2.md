@@ -7,4 +7,5 @@ CPU Intel(R) Core(TM) i5-2500K CPU 3.30GHz
 
 ## Miten toimin:
 Päätin tehdä moduulin, jonka funktio on asentaa apache2 paketti ja muuttaa sen kotisivun
+
 ulkomuotoa automaattisesti
