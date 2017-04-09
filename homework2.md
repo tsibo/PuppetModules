@@ -22,3 +22,18 @@ komennolla
 
 jonka jälkeen menin manifests kansioon ja loin init.pp tiedoston komennolla
 `sudo nano init.pp`
+
+Tein ensin tiedostoon vain sen osan joka asentaa apachen koneelle joten
+moduuli näytti ensin tältä
+
+`class h2apache2{
+        package { 'apache2':
+                ensure => "installed",
+        }
+}
+`
+
+Tämän jälkeen ajoin modulen komennolla `puppet apply -e 'class{h2apache2:}'`
+ja koska kaiki näytti toimivan kävin samalla tarkastamassa selaimen kautta, 
+mihin localhost minut vei ja ilokseni huomasin sen avaavan apachen default
+it works sivun
