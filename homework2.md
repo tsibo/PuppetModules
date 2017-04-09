@@ -112,3 +112,6 @@ Kun moduulin ajaa jälleen komennolla `sudo puppet apply -e 'class{h2apache2:}'`
 
 [Markdownin tutoriaali](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
+
+[Opettajan versio samanlaisesta ratkaisusta, mutta ssh](http://terokarvinen.com/2013/ssh-server-puppet-module-for-ubuntu-12-04)
+
