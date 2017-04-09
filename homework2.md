@@ -53,3 +53,27 @@ muokkaa index.html filen sisältöä haluamakseni kun ajan moduulin
 
 Tämän jälkeen oli vielä ajettava `sudo service apache2 restart` komento jotta
  muutokset tulivat voimaan
+
+
+Seuraavaksi halusin vielä varmistaa että apache2 on käynnissä service atribuutin
+avulla, joten minun piti lisätä se vielä moduuliini joka näytti viimeisen vaiheen jälkeen tältä
+
+
+' class h2apache2{
+        package { 'apache2':
+                ensure => "installed",
+        }
+        file { '/var/www/html/index.html':
+                content => "vaihda muuta hauskaa tilalle kuin it works",
+        }
+        service { 'apache2':
+                ensure => 'running',
+                require => [
+                Package['apache2'],
+                File['/var/www/html/index.html'],
+                ]
+        }
+}
+`
+
+Moduuli toimi niinkuin pitikin 
