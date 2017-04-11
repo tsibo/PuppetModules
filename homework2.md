@@ -26,14 +26,11 @@ jonka jälkeen menin manifests kansioon ja loin init.pp tiedoston komennolla
 Tein ensin tiedostoon vain sen osan joka asentaa apachen koneelle joten
 moduuli näytti ensin tältä
 
-	class h2apache2{
 
-        package { 'apache2':
-
-                ensure => "installed",
-
-        }
-
+	class h2apache2 {
+		package { 'apache2':
+        		ensure => "installed",
+		}
 	}
 
 
