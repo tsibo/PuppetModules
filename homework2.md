@@ -18,7 +18,7 @@ kirjoitettu "localhost" ei antanut toimivaa apachen kotisivua.
 Tämän jälkeen tein uuden moduulin sijaintiin /etc/puppet/modules
 komennolla
 
-`sudo mkdir -p h2apache2/manifests/`
+	$sudo mkdir -p h2apache2/manifests/
 
 jonka jälkeen menin manifests kansioon ja loin init.pp tiedoston komennolla
 `sudo nano init.pp`
@@ -42,19 +42,14 @@ it works sivun, joten moduuli toimi halutulla tavalla.
 Tämän jälkeen menin muokkaamaan moduuliani siten, että file atribuutti
 muokkaa index.html filen sisältöä haluamakseni kun ajan moduulin
 
+
 	class h2apache2{
-
-        package { 'apache2':
-
-                ensure => "installed",
-
-        }
-
-        file { '/var/www/html/index.html':
-
-                content => "vaihda muuta hauskaa tilalle kuin it works",
-        }
-
+        	package { 'apache2':
+                	ensure => "installed",
+        	}
+        	file { '/var/www/html/index.html':
+                	content => "vaihda muuta hauskaa tilalle kuin it works",
+		}
 	}
 
 
@@ -67,33 +62,19 @@ avulla, joten minun piti lisätä se vielä moduuliini joka näytti viimeisen va
 
 
 	class h2apache2{
-
-        package { 'apache2':
-
-                ensure => "installed",
-
-        }
-
-        file { '/var/www/html/index.html':
-
-                content => "vaihda muuta hauskaa tilalle kuin it works",
-
-        }
-
-        service { 'apache2':
-
-                ensure => 'running',
-
-                require => [
-
-                Package['apache2'],
-
-                File['/var/www/html/index.html'],
-
-                ]
-
-        }
-
+		package { 'apache2':
+                	ensure => "installed",
+        	}
+        	file { '/var/www/html/index.html':
+                	content => "vaihda muuta hauskaa tilalle kuin it works",
+		}
+        	service { 'apache2':
+                	ensure => 'running',
+                	require => [
+                	Package['apache2'],
+                	File['/var/www/html/index.html'],
+                	]
+        	}
 	}
 
 
