@@ -95,15 +95,20 @@ Lopputulos näytti tältä:
 	}
 
 Ajoin moduulin komennolla
+
 `sudo puppet apply --modulepath ~/PuppetModules/homework3/modules -e 'class {'apache2':}'`
+
 ja kaikki tuntui toimivan hyvin.
-Huomasin kuitenkin, että aikasemmat muunnelmani apacheen olivat tehneet jotain häikkää tilanteelle, sillä vaikka Apache asentuikin otimivasti en
-saanut default webpagea vaihdettua vaan siihen jäi aikaisemmin määrittelemäni aloitussivu vaikka olin purgennut asennuksen ennen moduulin ajoa. Pohdin asiaa hetkenm, mutta sitten tulivat väliin muut kiireet ja jätin moduulin vain puoliksi toimivaksi
+Huomasin kuitenkin, että aikasemmat muunnelmani apacheen olivat tehneet jotain häikkää tilanteelle, sillä vaikka Apache asentuikin toimivasti en
+saanut default webpagea vaihdettua vaan siihen jäi aikaisemmin määrittelemäni aloitussivu vaikka olin purgennut asennuksen ennen moduulin ajoa. Pohdin asiaa hetken, mutta sitten tulivat väliin muut kiireet ja jätin moduulin vain puoliksi toimivaksi
 
 ## References
 [opettajan ohjeet apachen kotisivun muuttamiseksi ilman moduulia](http://terokarvinen.com/2016/new-default-website-with-apache2-show-your-homepage-at-top-of-example-com-no-tilde)
+
 [neuvoja templateihin](https://docs.puppet.com/puppet/4.9/lang_template.html)
+
 [neuvoja kurssikavereiden tehtävistä1](https://github.com/GarStiver/PuppetModules/tree/master/thirdhomework)
+
 [neuvoja kurssikavereiden tehtävistä2](https://github.com/nikaar/puppet)
 
 	
