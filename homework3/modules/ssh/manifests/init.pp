@@ -3,7 +3,7 @@ class ssh{
 		ensure => "installed",
 	}
 
-	sercvice {"sshd":
+	service {"sshd":
 		ensure => "running",
 		enable => "true",
 		require => Package["ssh"],
