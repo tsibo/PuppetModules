@@ -11,6 +11,8 @@ c)Vaihda Apachen oletusweppisivu( default website) Puppetilla
 Tein ensin ssh moduulin jonka avulla sain vaihdettua ssh portin 22 sta 2222 ksi
 
 Moduuli näytti tältä
+
+
 	class ssh{
         	package {"ssh":
                 	ensure => "installed",
