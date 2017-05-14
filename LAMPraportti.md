@@ -275,8 +275,7 @@ sisällöksi laitoin kolme komentoa, jotka asensivat juuri tekemäni moduulit
     sudo puppet apply --modulepath ~/PuppetModules/Modules -e 'class{"mysql":}'
     sudo puppet apply --modulepath ~/PuppetModules/Modules -e 'class{"php":}'
     
-Tämän jälkeen poistin purgeamalla kaikki 3 ohjelmaa, jotka moduulin on tarkoitus asentaa ja ajoin skriptin 
-komennolla
+Tämän jälkeen tein uuden virtuaalikoneen ja kokeilin ajaa skirptit sillä läpi
 
     sudo sh LAMPapply.sh
     
@@ -303,7 +302,7 @@ toimivat niin kuin pitikin
 Seuraavaksi testasin oliko mysql asentunut ja vaihtanut rootin salasanan. ja tämä toimi juuri
 niinkuin pitikin. 
 
-Viimeiseksi testasin php n toiminnan avamaalla selaimessa localhost/test.php sivun ja sekin toimi ja näytti 
+Viimeiseksi testasin php n toiminnan avamaalla selaimessa localhost/~kaapo/test.php sivun ja sekin toimi ja printtasi kakkosen
 
     
 
