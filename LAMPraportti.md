@@ -91,11 +91,11 @@ Itse Templaten loin sijaintiin /PuppetModules/Modules/apache/templates komennoll
 Sisällöksi templateen laitoin vain 
     
     <!DOCTYPE html>
-<html>
+    <html>
         <body>
                 <p>Morjesta moi Korsosta</p>
         </body>
-</html>
+    </html>
 
 Tämän jälkeen suurryin takaisin muokkaamaan itse moduulia ja lisäsin sen loppuun tarvittavat osat, jotka
 loivat public_html kansion ja ottivat tehdyn templaten käyttöön
@@ -140,7 +140,7 @@ localhost/~kaapo/
 
 Sivu avasi tekemäni templaten niin kuin pitikin
 
-##MYSQL
+## MYSQL
 
 Seuraava osuus LAMP ssa oli tehdä moduuli joka asentaa mysql serverin ja tekee root käyttäjän/salasanan
 
@@ -224,9 +224,90 @@ Ja juuri vaihtamani Changedpassword1 toimi joten moduuli toimi niinkuin pitikin
     Your MySQL connection id is 6
     Server version: 5.7.18-0ubuntu0.16.04.1 (Ubuntu)
 
-##PHP
+## PHP
 
-Viimeinen osa LAMP ssa oli PHP moduulin teko ja testaus
+Viimeinen osa LAMP ssa oli PHP moduulin teko ja testaus.
+Olin jälleen luonut sille tarvittavat kansiot sijaintiin /PuppetModules/Modules/php/manifests, 
+joten loin sinne tiedoston init.pp ja tein sinne muokkaukset joilla varmistin, että php on asennettu
+
+    class php { 
+        package {'php7.0':
+                ensure => "installed",
+        }
+    }
+
+    kaapo@kaapopup:~/PuppetModules/Modules/php/manifests$ sudo puppet apply 
+    --modulepath ~/PuppetModules/Modules -e 'class {'php':}'
+    Notice: Compiled catalog for kaapopup.dhcp.inet.fi in environment production in 0.27 seconds
+    Notice: /Stage[main]/Php/Package[php7.0]/ensure: ensure changed 'purged' to 'present'
+    Notice: Finished catalog run in 11.88 seconds
+    
+ Kaikki toimii toistaiseksi, seuraavaksi osuus laitoin moduulin myös luomaan test.php filen jonka avulla voi
+ tarkistaa, että php toimii:
+ 
+        class php {
+                package {'php7.0':
+                    ensure => "installed",
+                }
+                package {'libapache2-mod-php7.0':
+                    ensure => "installed"
+                }
+                package {'libapache2-mod-php':
+                    ensure => "installed",
+                }
+                file {'/var/www/html/test.php':
+                    ensure => "file",
+                    content => "<?php echo '<p> Moro korso</p>'; ?>",
+                }
+        }
+
+Menin tarkistamaan toimiiko sivu joten kirjoitin selaimeen localhost/test.php ja se näytti haluamani 
+"Moro Korso" tekstin eli myös php oli asentunut onnistuneesti.
+
+## Koko LAMP in asentaminen yhdellä skriptillä
+
+Halusin pystyä asentamaan kaikki LAMP in moduulit yhdellä komennolla joten loin tiedoston LAMPapply.sh, jonka
+sisällöksi laitoin kolme komentoa, jotka asensivat juuri tekemäni moduulit
+    
+    #!/bin/bash
+
+    sudo puppet apply --modulepath ~/PuppetModules/Modules -e 'class{"apache":}'
+    sudo puppet apply --modulepath ~/PuppetModules/Modules -e 'class{"mysql":}'
+    sudo puppet apply --modulepath ~/PuppetModules/Modules -e 'class{"php":}'
+    
+Tämän jälkeen poistin purgeamalla kaikki 3 ohjelmaa, jotka moduulin on tarkoitus asentaa ja ajoin skriptin 
+komennolla
+
+    sudo sh LAMPapply.sh
+    
+    kaapo@kaapopup:~/PuppetModules$ sh LAMPapply.sh 
+    Notice: Compiled catalog for kaapopup.dhcp.inet.fi in environment production in 0.48 seconds
+    Notice: /Stage[main]/Apache/Package[apache2]/ensure: ensure changed 'purged' to 'present'
+    Notice: /Stage[main]/Apache/File[/etc/apache2/mods-enabled/userdir.conf]/ensure: created
+    Notice: /Stage[main]/Apache/File[/etc/apache2/mods-enabled/userdir.load]/ensure: created
+    Notice: /Stage[main]/Apache/Service[apache2]: Triggered 'refresh' from 2 events
+    Notice: Finished catalog run in 7.97 seconds
+    Notice: Compiled catalog for kaapopup.dhcp.inet.fi in environment production in 0.42 seconds
+    Notice: /Stage[main]/Mysql/Package[mysql-server]/ensure: ensure changed 'purged' to 'present'
+    Notice: /Stage[main]/Mysql/Exec[mysqlpasswd]/returns: executed successfully
+    Notice: /Stage[main]/Mysql/Service[mysql]: Triggered 'refresh' from 1 events
+    Notice: Finished catalog run in 4.48 seconds
+    Notice: Compiled catalog for kaapopup.dhcp.inet.fi in environment production in 0.39 seconds
+    Notice: /Stage[main]/Php/Package[php7.0]/ensure: ensure changed 'purged' to 'present'
+    Notice: Finished catalog run in 2.38 seconds
+
+Skripti näytti toimivan ilman error viestejä, mutta oli vielä testattava että kaikki halutut asiat 
+alkoivat toimia. Testasin ensin apachen toimivuuden sekä localhostissa, että localhost/~kaapo/ ja molemmat
+toimivat niin kuin pitikin
+
+Seuraavaksi testasin oliko mysql asentunut ja vaihtanut rootin salasanan. ja tämä toimi juuri
+niinkuin pitikin. 
+
+Viimeiseksi testasin php n toiminnan avamaalla selaimessa localhost/test.php sivun ja sekin toimi ja näytti 
+
+    
+
+
 
 
     
