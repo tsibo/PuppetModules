@@ -7,14 +7,26 @@ class php {
 	}
 	package {'libapache2-mod-php7.0':
                 ensure => "installed",
+	}
+	service {'apache2':
+		ensure => "running",
+		enable => "true",
+		require => Package["apache2"],
+		
+	}
+	file {'/etc/apache2/mods-available/php7.0.conf':
+		content => template("php/php7.0.conf"),
 		notify => Service["apache2"],
 	}
-	file {'/var/www/html/test.php':
-		ensure => "file",
-		content => "<?php print(<p>'Moro korso!'</p>); ?>",
+	   file {'/home/kaapo/public_html/test.php':
+                ensure => "file",
+                content => "<?php print(1+1); ?>",
+        	notify => Service["apache2"],
+		require => Package["apache2"],
+		owner => "kaapo",
+		group => "kaapo",
+		mode => 644,
 	}
-	service{'apache2':
-		notify => Service['apache2'],		
-	}
+
 }
 
