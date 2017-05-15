@@ -98,7 +98,8 @@ Sisällöksi templateen laitoin vain
     </html>
 
 Tämän jälkeen suurryin takaisin muokkaamaan itse moduulia ja lisäsin sen loppuun tarvittavat osat, jotka
-loivat public_html kansion ja ottivat tehdyn templaten käyttöön
+loivat public_html kansion ja ottivat tehdyn templaten käyttöön. Käytin public_html kansiota hyödyksi myös php: n testaamisessa,
+ joten se oli hyvä laittaa kuntoon tässä vaiheessa.
 
 Kokonaisuudessaan moduuli näytti tältä 
 
@@ -145,7 +146,7 @@ Sivu avasi tekemäni templaten niin kuin pitikin
 Seuraava osuus LAMP ssa oli tehdä moduuli joka asentaa mysql serverin ja tekee root käyttäjän/salasanan
 
 Olin jälleen luonut kansion valmiiksi sijaintiin /PuppetModules/Modules/mysql/manifests , joten aloitin
-moduulin tekemisen luomalla tuonne init.pp filen ja laitoin sen asentamaan mysql-server paketin
+moduulin tekemisen luomalla tuonne init.pp filen ja laitoin sen asentamaan mysql-server paketin. Käytin mysql moduulin teossa apuna pari linkkiä [1](https://awaseroot.wordpress.com/2012/04/30/puppet-module-for-lamp-installation/) ja [2](https://www.digitalocean.com/community/tutorials/getting-started-with-puppet-code-manifests-and-modules)
 
     class mysql { 
         package{'mysql-server':
