@@ -63,7 +63,7 @@ ajamalla taas käyntiin
     
 Eli apache lähti käyntiin niinkuin pitikin
 
-Tämän jälkeen Halusin saada kotihakemistoni käyttöön joten lisäsiin moduuliin tarivttavat osat eli lisäsin moduuliin 
+Tämän jälkeen Halusin saada kotihakemistoni käyttöön joten lisäsiin moduuliin tarvittavat osat eli lisäsin moduuliin 
 2kpl file resurssia
 
     file {'/etc/apache2/mods-enabled/userdir.load':
@@ -99,7 +99,7 @@ Sisällöksi templateen laitoin vain
 
 Tämän jälkeen suurryin takaisin muokkaamaan itse moduulia ja lisäsin sen loppuun tarvittavat osat, jotka
 loivat public_html kansion ja ottivat tehdyn templaten käyttöön. Käytin public_html kansiota hyödyksi myös php: n testaamisessa,
- joten se oli hyvä laittaa kuntoon tässä vaiheessa.
+joten se oli hyvä laittaa kuntoon tässä vaiheessa.
 
 Kokonaisuudessaan moduuli näytti tältä 
 
@@ -263,7 +263,7 @@ joten loin sinne tiedoston init.pp ja tein sinne muokkaukset joilla varmistin, e
         }
 
 Huomasin, että homma ei pelitä ja samalla muistin, että php7.0.cong filestä piti kommentoida pari riviä 
-tekstistä poism joten loin siitä templaten johon nämä kommentoinnit oli tehty ja muutin moduulia
+tekstistä pois joten loin siitä templaten johon nämä kommentoinnit oli tehty ja muutin moduulia
 
         
     class php {
