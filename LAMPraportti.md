@@ -262,8 +262,44 @@ joten loin sinne tiedoston init.pp ja tein sinne muokkaukset joilla varmistin, e
                 }
         }
 
-Menin tarkistamaan toimiiko sivu joten kirjoitin selaimeen localhost/test.php ja se näytti haluamani 
-"Moro Korso" tekstin eli myös php oli asentunut onnistuneesti.
+Huomasin, että homma ei pelitä ja samalla muistin, että php7.0.cong filestä piti kommentoida pari riviä 
+tekstistä poism joten loin siitä templaten johon nämä kommentoinnit oli tehty ja muutin moduulia
+
+        
+    class php {
+        package{'apache2':
+                ensure => "installed",
+        }
+        package {'php7.0':
+                ensure => "installed",
+        }
+        package {'libapache2-mod-php7.0':
+                ensure => "installed",
+        }
+        service {'apache2':
+                ensure => "running",
+                enable => "true",
+                require => Package["apache2"],
+
+        }
+        file {'/etc/apache2/mods-available/php7.0.conf':
+                content => template("php/php7.0.conf"),
+                notify => Service["apache2"],
+        }
+           file {'/home/kaapo/public_html/test.php':
+                ensure => "file",
+                content => "<?php print(1+1); ?>",
+                notify => Service["apache2"],
+                require => Package["apache2"],
+                owner => "kaapo",
+                group => "kaapo",
+                mode => 644,
+        }
+
+    }
+     
+Menin tarkistamaan toimiiko sivu joten kirjoitin selaimeen localhost/~kaapo/test.php ja se näytti haluamani vastaukseni
+1+1 printtaukseen "2" eli myös php oli asentunut onnistuneesti.
 
 ## Koko LAMP in asentaminen yhdellä skriptillä
 
@@ -304,6 +340,10 @@ Seuraavaksi testasin oliko mysql asentunut ja vaihtanut rootin salasanan. ja tä
 niinkuin pitikin. 
 
 Viimeiseksi testasin php n toiminnan avamaalla selaimessa localhost/~kaapo/test.php sivun ja sekin toimi ja printtasi kakkosen
+
+## REFERENCES
+
+
 
     
 
