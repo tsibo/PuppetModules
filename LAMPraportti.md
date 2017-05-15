@@ -342,9 +342,10 @@ niinkuin pitikin.
 Viimeiseksi testasin php n toiminnan avamaalla selaimessa localhost/~kaapo/test.php sivun ja sekin toimi ja printtasi kakkosen
 
 ## REFERENCES
-
-
-
+[]()
+[]()
+[]()
+[]()
     
 
 
