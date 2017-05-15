@@ -342,10 +342,10 @@ niinkuin pitikin.
 Viimeiseksi testasin php n toiminnan avamaalla selaimessa localhost/~kaapo/test.php sivun ja sekin toimi ja printtasi kakkosen
 
 ## REFERENCES
-[]()
-[]()
-[]()
-[]()
+[apua phpn kanssa](http://terokarvinen.com/2016/read-mysql-database-with-php-php-pdo)
+[apua apache moduulin kanssa](https://github.com/nikaar/puppet/tree/master/modules/apache)
+[yleistä lamp apua, varsinkin mysql kanssa](https://awaseroot.wordpress.com/2012/04/30/puppet-module-for-lamp-installation/)
+[lisää apua phpn kanssa ja yleistä lamp asiaa](https://www.digitalocean.com/community/tutorials/getting-started-with-puppet-code-manifests-and-modules)
     
 
 
